@@ -1,0 +1,42 @@
+import random
+
+
+def play_high_low():
+    print("🎲 하이 로우 게임을 시작합니다! (범위: 1~10) 🎲\n")
+
+    # 1부터 10 사이의 서로 다른 2개의 정수 선택
+    numbers = random.sample(range(1, 11), 2)
+    first_num = numbers[0]
+    second_num = numbers[1]
+
+    # 첫 번째 정수 제시
+    print(f"첫 번째 숫자는 [ {first_num} ] 입니다.")
+
+    # 유저 입력 받기 (잘못된 입력 예외 처리 포함)
+    while True:
+        user_choice = input("두 번째 숫자는 이보다 높을까요, 낮을까요? ('하이' 또는 '로우' 입력): ").strip()
+        if user_choice in ['하이', '로우']:
+            break
+        print("❌ 잘못된 입력입니다. '하이' 또는 '로우'만 입력해주세요.")
+
+    print("\n정답 공개! 🥁")
+    print(f"두 번째 숫자는 [ {second_num} ] 이었습니다!")
+
+    # 정답 판정
+    # Case 1: 두 번째 숫자가 더 큰 경우 (하이)
+    if second_num > first_num:
+        correct_answer = "하이"
+    # Case 2: 두 번째 숫자가 더 작은 경우 (로우)
+    else:
+        correct_answer = "로우"
+
+    # 결과 출력
+    if user_choice == correct_answer:
+        print("🎉 축하합니다! 맞추셨습니다. 🎉")
+    else:
+        print("😢 틀렸네요. 유감입니다. 😢")
+
+
+# 게임 실행
+if __name__ == "__main__":
+    play_high_low()
